@@ -4,3 +4,4 @@ node_modules
 .cache
 .eslintcache
 package-lock.json
+test.*
