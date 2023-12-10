@@ -15,7 +15,7 @@
   \**************/
 /***/ ((module) => {
 
-eval("const a = 1;\n\nmodule.exports = {\n\ta\n};\n\n\n//# sourceURL=webpack://cssmoduledemo/./a.js?");
+eval("// hello world for ZJX\n  const a = 1;\n\nmodule.exports = {\n\ta\n};\n\n\n//# sourceURL=webpack://cssmoduledemo/./a.js?");
 
 /***/ }),
 
@@ -25,7 +25,7 @@ eval("const a = 1;\n\nmodule.exports = {\n\ta\n};\n\n\n//# sourceURL=webpack://c
   \******************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const a = __webpack_require__(/*! ./a.js */ \"./a.js\");\nconsole.log(a);\n\n\n//# sourceURL=webpack://cssmoduledemo/./index.js?");
+eval("// hello world for ZJX\n  const a = __webpack_require__(/*! ./a.js */ \"./a.js\");\nconsole.log(a);\n\n\n//# sourceURL=webpack://cssmoduledemo/./index.js?");
 
 /***/ })
 
