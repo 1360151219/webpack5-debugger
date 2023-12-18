@@ -1,5 +1,7 @@
 # Webpack5源码解读
 
+**草稿文：https://xfjhqij9zq.feishu.cn/docx/ZLwcdCHwjoDIncxE760cEGKGndc**
+
 > 本文clone的webpack版本为5.88.2
 
 ## 调试
