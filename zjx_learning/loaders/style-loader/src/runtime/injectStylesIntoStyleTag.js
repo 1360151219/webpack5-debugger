@@ -82,6 +82,8 @@ function addElementStyle(obj, options) {
 }
 
 module.exports = (list, options) => {
+	debugger;
+	console.log("===injectStyle");
 	options = options || {};
 
 	list = list || [];
@@ -107,7 +109,7 @@ module.exports = (list, options) => {
 				stylesInDOM.splice(index, 1);
 			}
 		}
-		
+
 		const newLastIdentifiers = modulesToDom(newList, options);
 		lastIdentifiers = newLastIdentifiers;
 	};

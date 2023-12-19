@@ -26,5 +26,11 @@ export default {
 				use: [path.resolve(__dirname, "./loaders/index.js")]
 			}
 		]
+	},
+	devServer: {
+		static: {
+			directory: path.join(__dirname, "./dist")
+		},
+		hot: true
 	}
 };
