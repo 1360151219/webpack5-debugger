@@ -10,29 +10,11 @@ module.exports = {
 	resolve: {
 		extensions: [".js"]
 	},
-	plugins: [new BundleAnalyzerPlugin()],
+	// plugins: [new BundleAnalyzerPlugin()],
 	optimization: {
 		splitChunks: {
-			minSize: 0,
-			minChunks: 1,
 			cacheGroups: {
-				// defaultVendors: {
-				// 	test: /[\\/]node_modules[\\/]/,
-				// 	priority: -10,
-				// 	reuseExistingChunk: true
-				// },
-				// default: {
-				// 	minChunks: 2,
-				// 	priority: -20,
-				// 	reuseExistingChunk: true
-				// },
-				lodashForin: {
-					// 我们只针对lodash的forIn函数
-					test: /[\\/]node_modules[\\/](lodash)/,
-					name: "lodash-forin",
-					filename: "forin.js",
-					chunks: "all"
-				}
+				// default: false
 			}
 		}
 	}
