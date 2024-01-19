@@ -14,7 +14,12 @@ module.exports = {
 	optimization: {
 		splitChunks: {
 			cacheGroups: {
-				// default: false
+				lodashVender: {
+					test: /[\\/]node_modules[\\/]lodash/,
+					reuseExistingChunk: true,
+					chunks: "all",
+					filename: "lodashVender.js"
+				}
 			}
 		}
 	}
