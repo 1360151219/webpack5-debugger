@@ -37,6 +37,7 @@ const loader = function loader(content) {
 };
 /** request: css文件的路径 */
 loader.pitch = function pitch(request) {
+  console.log('===style-loader',arguments);
   if (
     this._compiler &&
     this._compiler.options &&
