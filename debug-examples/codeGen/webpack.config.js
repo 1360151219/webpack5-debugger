@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin"); //模板文件插件，能够自动将打包的css和js加入到模板文件中
+const TestDepandencyPlugin = require("./tools/TestDepandency.js");
 module.exports = {
 	entry: "./index.js",
 	devtool: false,
@@ -11,5 +12,6 @@ module.exports = {
 	// plugins: [new HtmlWebpackPlugin()],
 	resolve: {
 		extensions: [".js"]
-	}
+	},
+	plugins: [new TestDepandencyPlugin()]
 };
