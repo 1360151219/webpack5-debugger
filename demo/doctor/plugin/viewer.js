@@ -8,6 +8,9 @@ const renderViewer = ({ title, stats }) => {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
+  <script>
+    window.bundleStats = ${stats};
+  </script>
 </head>
 <body>
   <div id="app">

@@ -8,6 +8,8 @@ const { resolve } = require("path");
 class WebpackBundleAnalyzer {
 	constructor(options) {
 		this.options = options;
+		this.server = null;
+		this.wss = null;
 	}
 
 	async startServer(stats) {
@@ -36,7 +38,7 @@ class WebpackBundleAnalyzer {
 		});
 
 		const wss = new WebSocket.Server({ server: this.server });
-
+		this.wss = wss;
 		wss.on("connection", ws => {
 			ws.on("error", err => {
 				if (err.errno) return;
@@ -45,8 +47,22 @@ class WebpackBundleAnalyzer {
 		});
 	}
 
+	updateChartData(chartData) {
+		this.wss.clients.forEach(client => {
+			if (client.readyState === WebSocket.OPEN) {
+				client.send(
+					JSON.stringify({ event: "chartDataUpdated", data: chartData })
+				);
+			}
+		});
+	}
+
 	apply(compiler) {
 		compiler.hooks.done.tap("WebpackBundleAnalyzer", stats => {
+			if (this.server) {
+				this.updateChartData(stats.toJson());
+				return;
+			}
 			this.startServer(stats.toJson());
 		});
 	}

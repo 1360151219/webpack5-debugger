@@ -1,8 +1,8 @@
 {
   "hash": "d70887f3b1c53dd51167",
   "version": "5.97.1",
-  "time": 123,
-  "builtAt": 1743068744956,
+  "time": 122,
+  "builtAt": 1743420816000,
   "publicPath": "auto",
   "outputPath": "/Users/bytedance/workspace/webpack5-debugger/debug-examples/analysis/dist",
   "assetsByChunkName": {
