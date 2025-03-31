@@ -1,0 +1,52 @@
+{
+  "name": "demo-doctor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && webpack --mode=development --watch",
+    "build:web": "rm -rf dist_web && webpack --mode=production -c ./webpack.config.web.js",
+    "dev": "webpack serve --mode=development"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.19.1",
+    "@babel/preset-env": "^7.19.1",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/node": "^18.7.18",
+    "@types/react": "^18.0.20",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.35.1",
+    "@typescript-eslint/parser": "^5.35.1",
+    "babel-loader": "^8.2.5",
+    "core-js": "^3.25.1",
+    "css-loader": "^6.7.1",
+    "eslint": "^8.23.0",
+    "eslint-config-psfe": "^1.0.0",
+    "eslint-import-resolver-typescript": "^3.5.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.7.1",
+    "sass": "^1.54.9",
+    "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.1",
+    "typescript": "^4.8.3",
+    "webpack": "^5.88.2",
+    "webpack-bundle-analyzer": "^4.10.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "gulp-sourcemaps": "^3.0.0",
+    "html-escaper": "^3.0.3",
+    "lodash": "^4.17.21",
+    "opener": "^1.5.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
