@@ -2,6 +2,7 @@ import { createRoot } from "react-dom/client";
 import React from "react";
 import App from "./app";
 import { ContextProvider } from "./context";
+import "./index.scss";
 
 // Initializing WebSocket for live treemap updates
 let ws;
