@@ -2,16 +2,28 @@ import React from "react";
 import { useStore } from "../context";
 import { formatFileSize } from "../utils";
 import { Collapsible, Tag, Typography } from "@douyinfe/semi-ui";
-import { set } from "core-js/core/dict";
+import { TagColor } from "@douyinfe/semi-ui/lib/es/tag";
+
+// background: rgba(var(--semi-light-blue-1), 0.3);
+//     padding: 4px 6px;
+//     border-radius: 6px;
+
+const ColorMap = [
+	{
+		bg: "rgba(var(--semi-light-blue-1), 0.3)",
+		color: "var(--semi-color-secondary)",
+		tagColor: "light-blue" as TagColor
+	}
+];
 
 export const Summary = () => {
 	const {
 		state: { data }
 	} = useStore();
 
-	const [entrypointsOpen, setEntrypointsOpen] = React.useState(false);
 	console.log("===data", data);
 	const { chunks, entrypoints } = data;
+	const asyncChunkLength = chunks.filter(chunk => !chunk.initial).length;
 
 	const entrypointsCount = Object.keys(entrypoints).length;
 	return (
@@ -39,55 +51,50 @@ export const Summary = () => {
 						</div>
 					</div>
 					<div>
-						<div
-							className="flex justify-between text-sm text-gray-600 mb-1 cursor-pointer"
-							onClick={() => {
-								setEntrypointsOpen(open => !open);
-							}}
-						>
+						<div className="flex justify-between text-sm text-gray-600 mb-1">
 							<span>Entry Points</span>
 							<div className="flex items-center">
 								<span id="entryChunks">{entrypointsCount}</span>
-								<i
-									className="fas fa-chevron-down ml-1 text-xs transition-transform duration-300"
-									style={{
-										transform: entrypointsOpen ? "translateY(180deg)" : ""
-									}}
-								></i>
+								<i className="fas fa-chevron-down ml-1 text-xs transition-transform duration-300"></i>
 							</div>
 						</div>
-						<Collapsible isOpen={entrypointsOpen}>
-							{Object.values(entrypoints).map((entrypoint: any, index) => (
-								<div
-									key={index}
-									className="flex justify-between text-sm text-gray-400 mt-2 px-3 gap-4"
-								>
-									<Typography.Text
-										style={{ color: "var(--semi-color-secondary)" }}
+						<div>
+							{Object.values(entrypoints).map((entrypoint: any, index) => {
+								const Color = ColorMap[index];
+								return (
+									<div
+										key={index}
+										className="flex justify-between text-sm text-gray-400 mt-2 px-3 gap-4"
+										style={{
+											background: Color.bg,
+											borderRadius: 6,
+											padding: "4px 6px"
+										}}
 									>
-										{entrypoint.name}
-									</Typography.Text>
-									<div className="flex items-center gap-2">
-										{entrypoint.chunks.map((chunk: any) => (
-											<Tag
-												type="ghost"
-												size="small"
-												key={chunk.id}
-												color="light-blue"
-											>
-												<span>{chunk}</span>
-												{/* <span>{formatFileSize(chunk.size)}</span> */}
-											</Tag>
-										))}
+										<Typography.Text style={{ color: Color.color }}>
+											{entrypoint.name}
+										</Typography.Text>
+										<div className="flex items-center gap-2">
+											{entrypoint.chunks.map((chunk: any) => (
+												<Tag
+													type="ghost"
+													size="small"
+													key={chunk.id}
+													color={Color.tagColor}
+												>
+													<span>{chunk}</span>
+												</Tag>
+											))}
+										</div>
 									</div>
-								</div>
-							))}
-						</Collapsible>
+								);
+							})}
+						</div>
 					</div>
 					<div>
 						<div className="flex justify-between text-sm text-gray-600 mb-1">
 							<span>Async Chunks</span>
-							<span id="asyncChunks">0</span>
+							<span id="asyncChunks">{asyncChunkLength}</span>
 						</div>
 					</div>
 				</div>
